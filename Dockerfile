@@ -5,8 +5,17 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         openjdk-11-jre-headless \
         wget \
-        ca-certificates && \
+        ca-certificates \
+        procps \
+        file \
+        locales && \
+    sed -i '/pt_BR.UTF-8/s/^# //g' /etc/locale.gen && \
+    locale-gen && \
     rm -rf /var/lib/apt/lists/*
+
+ENV LANG=pt_BR.UTF-8
+ENV LANGUAGE=pt_BR:pt
+ENV LC_ALL=pt_BR.UTF-8
 
 # NOTE: o e-SUS PEC pede Java 8. Se este container falhar na instalação
 # por incompatibilidade de versão de JVM, troque a linha acima por:
@@ -18,8 +27,7 @@ WORKDIR /opt/esus
 
 # Coloque aqui o instalador baixado manualmente de:
 # https://sisaps.saude.gov.br/esus/ -> Download -> PEC para Produção (PostgreSQL)
-# Ex: eSUS-APS-PEC-5.3.XX-Linux64.jar
-COPY eSUS-APS-PEC-5.5.22-Linux64.jar /opt/esus/installer.jar
+COPY eSUS-AB-PEC-5.5.22-Linux64.jar /opt/esus/installer.jar
 COPY entrypoint.sh /opt/esus/entrypoint.sh
 RUN chmod +x /opt/esus/entrypoint.sh
 
