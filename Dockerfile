@@ -19,7 +19,7 @@ WORKDIR /opt/esus
 # Coloque aqui o instalador baixado manualmente de:
 # https://sisaps.saude.gov.br/esus/ -> Download -> PEC para Produção (PostgreSQL)
 # Ex: eSUS-APS-PEC-5.3.XX-Linux64.jar
-COPY eSUS-AB-PEC-5.5.22-Linux64.jar /opt/esus/installer.jar
+COPY eSUS-APS-PEC-5.5.22-Linux64.jar /opt/esus/installer.jar
 COPY entrypoint.sh /opt/esus/entrypoint.sh
 RUN chmod +x /opt/esus/entrypoint.sh
 
