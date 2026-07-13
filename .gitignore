@@ -1,0 +1,16 @@
+# Segredos - nunca versionar
+.env
+
+# Instalador oficial (arquivo grande, não deve ir pro repo)
+pec-installer/*.jar
+
+# Certificados TLS
+nginx/certs/
+certbot-www/
+
+# Volumes/dados locais, se algum dia forem montados como pasta
+esus_db_data/
+esus_pec_data/
+
+# Sistema
+.DS_Store
